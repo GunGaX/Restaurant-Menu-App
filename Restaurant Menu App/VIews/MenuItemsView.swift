@@ -8,34 +8,38 @@
 import SwiftUI
 
 struct MenuItemsView: View {
-    @State public var showSheet = false
     
     @StateObject private var viewModel = MenuViewViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                
-                MenuItemView(menuItems: viewModel.foods, menuCategory: .Food).environmentObject(viewModel)
-                MenuItemView(menuItems: viewModel.drinks, menuCategory: .Drink).environmentObject(viewModel)
-                MenuItemView(menuItems: viewModel.desserts, menuCategory: .Dessert).environmentObject(viewModel)
-                
-                    .navigationTitle("Menu")
-                    .toolbar {
-                        Button {
-                            showSheet.toggle()
-                        } label: {
-                            Image(systemName: "slider.horizontal.3")
-                                .bold()
-                                .font(.title3)
-                        }
-                        .sheet(isPresented: $showSheet) {
-                            MenuItemsOptionView(showSheet: $showSheet)
-                                .presentationDetents([.fraction(0.8), .large])
-                            
-                        }
-                    }
+                if viewModel.isFoodCategorySelected {
+                    MenuItemView(menuItems: viewModel.foods, menuCategory: .Food).environmentObject(viewModel)
+                }
+                if viewModel.isDrinkCategorySelected {
+                    MenuItemView(menuItems: viewModel.drinks, menuCategory: .Drink).environmentObject(viewModel)
+                }
+                if viewModel.isDessertCategorySelected {
+                    MenuItemView(menuItems: viewModel.desserts, menuCategory: .Dessert).environmentObject(viewModel)
+                }
             }
+            .navigationTitle("Menu")
+            .toolbar {
+                Button {
+                    viewModel.showSheet.toggle()
+                } label: {
+                    Image(systemName: "slider.horizontal.3")
+                        .bold()
+                        .font(.title3)
+                }
+                .sheet(isPresented: $viewModel.showSheet) {
+                    MenuItemsOptionView().environmentObject(viewModel)
+                        .presentationDetents([.fraction(0.8), .large])
+                    
+                }
+            }
+            
         }
         .padding(.bottom)
     }

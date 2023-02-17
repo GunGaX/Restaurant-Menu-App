@@ -40,4 +40,10 @@ class MenuViewViewModel: ObservableObject {
         MenuItem(id: UUID(), price: 6.59, title: "Dessert 3", menuCategory: .Dessert, ordersCount: 332, ingredients: []),
         MenuItem(id: UUID(), price: 4.99, title: "Dessert 4", menuCategory: .Dessert, ordersCount: 210, ingredients: [])
     ]
+    
+    @Published var showSheet = false
+    
+    @Published var isFoodCategorySelected = true
+    @Published var isDrinkCategorySelected = true
+    @Published var isDessertCategorySelected = true
 }

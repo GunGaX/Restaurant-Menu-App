@@ -7,29 +7,21 @@
 
 import SwiftUI
 
-enum SelectedCategories: String, CaseIterable {
-    case Food = "Food"
-    case Drink = "Drink"
-    case Dessert = "Dessert"
-}
-
-enum SortBy: String, CaseIterable {
-    case first = "Most Popular"
-    case second = "Price $-$$$"
-    case third = "Name A-Z"
-}
-
 struct MenuItemsOptionView: View {
-    @Binding var showSheet: Bool
+    
+    @EnvironmentObject var viewModel: MenuViewViewModel
+//    @Binding var showSheet: Bool
+    
     var body: some View {
         NavigationView {
             
             List {
-                Section(header: Text("SELECTED CATEGORIES")) {
-                    ForEach(SelectedCategories.allCases, id: \.self) { item in
-                        Text(item.rawValue)
-                    }
+                Section("SELECTED CATEGORY") {
+                    Toggle(MenuCategory.Food.rawValue, isOn: $viewModel.isFoodCategorySelected)
+                    Toggle(MenuCategory.Drink.rawValue, isOn: $viewModel.isDrinkCategorySelected)
+                    Toggle(MenuCategory.Dessert.rawValue, isOn: $viewModel.isDessertCategorySelected)
                 }
+                
                 Section(header: Text("SORT BY")) {
                     ForEach(SortBy.allCases, id: \.self) { item in
                         Text(item.rawValue)
@@ -39,7 +31,7 @@ struct MenuItemsOptionView: View {
             .navigationTitle("Filter")
             .toolbar {
                 Button {
-                    showSheet = false
+                    viewModel.showSheet = false
                 } label: {
                     Text("Done")
                         .bold()
@@ -51,8 +43,9 @@ struct MenuItemsOptionView: View {
 }
 
 struct MenuItemsOptionView_Previews: PreviewProvider {
-    @State static var showSheet = true
+//    @State static var showSheet = true
     static var previews: some View {
-        MenuItemsOptionView(showSheet: $showSheet)
+//        MenuItemsOptionView(showSheet: $showSheet)
+        MenuItemsOptionView().environmentObject(MenuViewViewModel())
     }
 }

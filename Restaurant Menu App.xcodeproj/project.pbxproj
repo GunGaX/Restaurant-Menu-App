@@ -101,10 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				B60E2A8029A035FB00192789 /* Restaurant_Menu_AppApp.swift */,
-				B60E2A8429A035FC00192789 /* Assets.xcassets */,
 				B60E2ABD29A03B4C00192789 /* VIews */,
 				B60E2ABC29A03A0800192789 /* Model */,
 				B60E2A8629A035FC00192789 /* Preview Content */,
+				B60E2A8429A035FC00192789 /* Assets.xcassets */,
 			);
 			path = "Restaurant Menu App";
 			sourceTree = "<group>";
@@ -132,9 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				B60E2AB229A038EF00192789 /* MenuItemsView.swift */,
-				B60E2AB029A038C400192789 /* MenuItemsOptionView.swift */,
-				B60E2AAC29A0387000192789 /* MenuItemDetailsView.swift */,
 				B60E2AAE29A0389500192789 /* MenuItemView.swift */,
+				B60E2AAC29A0387000192789 /* MenuItemDetailsView.swift */,
+				B60E2AB029A038C400192789 /* MenuItemsOptionView.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";

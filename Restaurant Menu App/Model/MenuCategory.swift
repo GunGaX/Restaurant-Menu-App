@@ -12,3 +12,9 @@ enum MenuCategory: String, CaseIterable {
     case Drink = "Drink"
     case Dessert = "Dessert"
 }
+
+enum SortBy: String, CaseIterable {
+    case first = "Most Popular"
+    case second = "Price $-$$$"
+    case third = "Name A-Z"
+}
