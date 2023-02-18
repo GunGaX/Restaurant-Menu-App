@@ -439,7 +439,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Restaurant-Menu-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Restaurant Menu ";
+				INFOPLIST_KEY_CFBundleDisplayName = "VIrtual Menu";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -470,7 +470,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Restaurant-Menu-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Restaurant Menu ";
+				INFOPLIST_KEY_CFBundleDisplayName = "VIrtual Menu";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
