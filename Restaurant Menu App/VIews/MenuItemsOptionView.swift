@@ -16,7 +16,7 @@ struct MenuItemsOptionView: View {
         NavigationView {
             
             List {
-                Section("SELECTED CATEGORY") {
+                Section("SELECTED CATEGORIES") {
                     Toggle(MenuCategory.Food.rawValue, isOn: $viewModel.isFoodCategorySelected)
                     Toggle(MenuCategory.Drink.rawValue, isOn: $viewModel.isDrinkCategorySelected)
                     Toggle(MenuCategory.Dessert.rawValue, isOn: $viewModel.isDessertCategorySelected)
@@ -43,9 +43,7 @@ struct MenuItemsOptionView: View {
 }
 
 struct MenuItemsOptionView_Previews: PreviewProvider {
-//    @State static var showSheet = true
     static var previews: some View {
-//        MenuItemsOptionView(showSheet: $showSheet)
         MenuItemsOptionView().environmentObject(MenuViewViewModel())
     }
 }

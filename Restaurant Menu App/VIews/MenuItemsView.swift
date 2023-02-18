@@ -24,6 +24,15 @@ struct MenuItemsView: View {
                     MenuItemView(menuItems: viewModel.desserts, menuCategory: .Dessert).environmentObject(viewModel)
                 }
             }
+            VStack {
+                if !viewModel.isFoodCategorySelected && !viewModel.isDrinkCategorySelected && !viewModel.isDessertCategorySelected {
+                    Text("Select Category")
+                        .foregroundColor(Color.gray)
+                        .font(.title)
+                    Spacer()
+                }
+            }
+            
             .navigationTitle("Menu")
             .toolbar {
                 Button {
