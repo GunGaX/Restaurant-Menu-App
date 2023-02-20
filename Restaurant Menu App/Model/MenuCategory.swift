@@ -14,7 +14,7 @@ enum MenuCategory: String, CaseIterable {
 }
 
 enum SortBy: String, CaseIterable {
-    case first = "Most Popular"
-    case second = "Price $-$$$"
-    case third = "Name A-Z"
+    case name = "Name A-Z"
+    case price = "Price $-$$$"
+    case mostPopular = "Most Popular"
 }

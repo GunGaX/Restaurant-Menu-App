@@ -46,4 +46,43 @@ class MenuViewViewModel: ObservableObject {
     @Published var isFoodCategorySelected = true
     @Published var isDrinkCategorySelected = true
     @Published var isDessertCategorySelected = true
-}
+    
+    @Published var sortMethod = SortBy.name
+    
+    func SortingCategory() {
+        
+        switch sortMethod {
+        case .mostPopular:
+            foods.sort() { $0.ordersCount > $1.ordersCount }
+            drinks.sort() { $0.ordersCount > $1.ordersCount }
+            desserts.sort() { $0.ordersCount > $1.ordersCount }
+        case .price:
+            foods.sort() { $0.price < $1.price }
+            drinks.sort() { $0.price < $1.price }
+            desserts.sort() { $0.price < $1.price }
+        case .name:
+            foods.sort() {
+                sortByTitle(lhs: $0, rhs: $1)
+            }
+            drinks.sort() {
+                sortByTitle(lhs: $0, rhs: $1)
+            }
+            desserts.sort() {
+                sortByTitle(lhs: $0, rhs: $1)
+            }        }
+    }
+    
+    func sortByTitle(lhs: MenuItem, rhs: MenuItem) -> Bool {
+            let lhsTitle = lhs.title.split(separator: " ")
+            let rhsTitle = rhs.title.split(separator: " ")
+            let lhsNumber = Int(lhsTitle[lhsTitle.count - 1]) ?? 0
+            let rhsNumber = Int(rhsTitle[rhsTitle.count - 1]) ?? 0
+            if lhsNumber != rhsNumber {
+                return lhsNumber < rhsNumber
+            } else {
+                return lhs.title < rhs.title
+            }
+        }
+    
+    }
+    

@@ -10,27 +10,29 @@ import SwiftUI
 struct MenuItemsOptionView: View {
     
     @EnvironmentObject var viewModel: MenuViewViewModel
-//    @Binding var showSheet: Bool
     
     var body: some View {
         NavigationView {
             
             List {
+                Section("SORTING") {
+                    Picker("Sort by", selection: $viewModel.sortMethod) {
+                        ForEach(SortBy.allCases, id: \.self) { item in
+                            Text(item.rawValue).tag(item)
+                        }
+                    }
+                }
+                
                 Section("SELECTED CATEGORIES") {
                     Toggle(MenuCategory.Food.rawValue, isOn: $viewModel.isFoodCategorySelected)
                     Toggle(MenuCategory.Drink.rawValue, isOn: $viewModel.isDrinkCategorySelected)
                     Toggle(MenuCategory.Dessert.rawValue, isOn: $viewModel.isDessertCategorySelected)
                 }
-                
-                Section(header: Text("SORT BY")) {
-                    ForEach(SortBy.allCases, id: \.self) { item in
-                        Text(item.rawValue)
-                    }
-                }
             }
             .navigationTitle("Filter")
             .toolbar {
                 Button {
+                    viewModel.SortingCategory()
                     viewModel.showSheet = false
                 } label: {
                     Text("Done")
