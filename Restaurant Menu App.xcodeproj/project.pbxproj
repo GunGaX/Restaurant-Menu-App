@@ -133,8 +133,8 @@
 		B60E2ABD29A03B4C00192789 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
-				B60E2AB229A038EF00192789 /* MenuItemsView.swift */,
 				B60E2AAE29A0389500192789 /* MenuItemView.swift */,
+				B60E2AB229A038EF00192789 /* MenuItemsView.swift */,
 				B60E2AAC29A0387000192789 /* MenuItemDetailsView.swift */,
 				B60E2AB029A038C400192789 /* MenuItemsOptionView.swift */,
 			);
