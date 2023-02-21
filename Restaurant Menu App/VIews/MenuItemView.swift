@@ -35,13 +35,38 @@ struct MenuItemView: View {
                 ForEach(menuItems, id: \.self) { item in
                     NavigationLink(destination: MenuItemDetailsView(menuItem: item)) {
                         VStack {
-                            Rectangle()
-                                .cornerRadius(16)
-                            Text(item.title)
+                            Image("PastaCarbonara")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: 120)
+                                .clipped()
+                            
+                            HStack {
+                                Text(item.title)
+                                    .foregroundColor(Color.black)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            .padding(.bottom, 0)
+                            
+                            HStack {
+                                Spacer()
+                                Text(String(format: "%.2f", item.price) + " $")
+                                    .foregroundColor(Color.black)
+                                    .bold()
+                                    .padding(.trailing)
+                            }
+                            .padding(.bottom, 5)
+                            
                         }
-                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                        .frame(height: 150)
+                        .frame(maxWidth: .infinity,
+                               alignment: .leading)
+                        .background(Color.white)
+                        
                     }
+                    .clipShape(RoundedRectangle(cornerRadius: 16,
+                                                style: .continuous))
+                    .shadow(color: Color.gray.opacity(0.5), radius: 8, x: 0, y: 1)
                 }
             }
         }
@@ -51,6 +76,6 @@ struct MenuItemView: View {
 struct MenuItemView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = MenuViewViewModel()
-        MenuItemView(menuItems: viewModel.drinks, menuCategory: .Drink)
+        MenuItemView(menuItems: viewModel.foods, menuCategory: .Food)
     }
 }
