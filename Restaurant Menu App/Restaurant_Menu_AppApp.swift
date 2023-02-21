@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct Restaurant_Menu_AppApp: App {
+    
+    @AppStorage("colorScheme") var colorScheme: Bool = true
+    
     var body: some Scene {
         WindowGroup {
             MenuItemsView()
+                .preferredColorScheme(colorScheme ? .light: .dark)
         }
     }
 }

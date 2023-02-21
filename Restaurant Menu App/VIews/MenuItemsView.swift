@@ -11,6 +11,8 @@ struct MenuItemsView: View {
     
     @StateObject private var viewModel = MenuViewViewModel()
     
+    @AppStorage("colorScheme") var colorScheme: Bool = true
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -44,8 +46,8 @@ struct MenuItemsView: View {
                 }
                 .sheet(isPresented: $viewModel.showSheet) {
                     MenuItemsOptionView().environmentObject(viewModel)
+                        .preferredColorScheme(colorScheme ? .light : .dark)
                         .presentationDetents([.fraction(0.8), .large])
-                    
                 }
             }
             

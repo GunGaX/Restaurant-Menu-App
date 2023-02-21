@@ -46,7 +46,6 @@ class MenuViewViewModel: ObservableObject {
     @Published var sortMethod = SortBy.name
     
     func SortingCategory() {
-        
         switch sortMethod {
         case .mostPopular:
             foods.sort() { $0.ordersCount > $1.ordersCount }

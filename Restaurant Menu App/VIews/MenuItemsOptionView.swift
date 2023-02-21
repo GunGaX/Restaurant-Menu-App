@@ -11,6 +11,8 @@ struct MenuItemsOptionView: View {
     
     @EnvironmentObject var viewModel: MenuViewViewModel
     
+    @AppStorage("colorScheme") var colorScheme: Bool = true
+
     var body: some View {
         NavigationView {
             
@@ -29,9 +31,17 @@ struct MenuItemsOptionView: View {
                     Toggle(MenuCategory.Dessert.rawValue, isOn: $viewModel.isDessertCategorySelected)
                 }
                 
+                Section("Appearance") {
+                    Picker("Appearance", selection: $colorScheme) {
+                        Text("Light").tag(true)
+                        Text("Dark").tag(false)
+                    }
+                    .padding(.vertical, 5)
+                    .pickerStyle(.segmented)
+                }
                 
             }
-            .navigationTitle("Filter")
+            .navigationTitle("Filter & Settings")
             .toolbar {
                 Button {
                     viewModel.SortingCategory()
