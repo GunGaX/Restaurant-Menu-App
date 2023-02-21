@@ -28,6 +28,8 @@ struct MenuItemsOptionView: View {
                     Toggle(MenuCategory.Drink.rawValue, isOn: $viewModel.isDrinkCategorySelected)
                     Toggle(MenuCategory.Dessert.rawValue, isOn: $viewModel.isDessertCategorySelected)
                 }
+                
+                
             }
             .navigationTitle("Filter")
             .toolbar {

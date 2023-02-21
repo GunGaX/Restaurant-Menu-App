@@ -15,7 +15,8 @@ struct MenuItemDetailsView: View {
                 Image("PastaCarbonara")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .navigationTitle(menuItem.title)
+                    .frame(height:300)
+                    .shadow(color: Color.gray.opacity(0.4), radius: 100, x: 0, y:10)
                 
                 Group {
                     Text("Price:")
@@ -45,6 +46,7 @@ struct MenuItemDetailsView: View {
             
                 
             }
+            .navigationTitle(menuItem.title)
         }
     }
 }

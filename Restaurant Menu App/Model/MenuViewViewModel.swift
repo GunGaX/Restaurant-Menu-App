@@ -57,28 +57,9 @@ class MenuViewViewModel: ObservableObject {
             drinks.sort() { $0.price < $1.price }
             desserts.sort() { $0.price < $1.price }
         case .name:
-            foods.sort() {
-                sortByTitle(lhs: $0, rhs: $1)
-            }
-            drinks.sort() {
-                sortByTitle(lhs: $0, rhs: $1)
-            }
-            desserts.sort() {
-                sortByTitle(lhs: $0, rhs: $1)
-            }        }
-    }
-    
-    func sortByTitle(lhs: MenuItem, rhs: MenuItem) -> Bool {
-            let lhsTitle = lhs.title.split(separator: " ")
-            let rhsTitle = rhs.title.split(separator: " ")
-            let lhsNumber = Int(lhsTitle[lhsTitle.count - 1]) ?? 0
-            let rhsNumber = Int(rhsTitle[rhsTitle.count - 1]) ?? 0
-            if lhsNumber != rhsNumber {
-                return lhsNumber < rhsNumber
-            } else {
-                return lhs.title < rhs.title
-            }
+            foods.sort() { $0.title < $1.title }
+            drinks.sort() { $0.title < $1.title }
+            desserts.sort() { $0.title < $1.title }
         }
-    
     }
-    
+}

@@ -21,8 +21,6 @@ struct MenuItemView: View {
     
     private var ColumnsGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
-    @Environment(\.colorScheme) var colorScheme
-    
     var body: some View {
         VStack {
             HStack {
@@ -43,7 +41,7 @@ struct MenuItemView: View {
                             
                             HStack {
                                 Text(item.title)
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.primary)
                                     .padding(.leading)
                                 Spacer()
                             }
@@ -52,7 +50,7 @@ struct MenuItemView: View {
                             HStack {
                                 Spacer()
                                 Text(String(format: "%.2f", item.price) + " $")
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.primary)
                                     .bold()
                                     .padding(.trailing)
                             }
@@ -61,12 +59,11 @@ struct MenuItemView: View {
                         }
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-                        .background(Color.white)
+                        .background(Color("backgroundColor"))
                         
                     }
-                    .clipShape(RoundedRectangle(cornerRadius: 16,
-                                                style: .continuous))
-                    .shadow(color: Color.gray.opacity(0.5), radius: 8, x: 0, y: 1)
+                    .cornerRadius(16)
+                    .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 1)
                 }
             }
         }
