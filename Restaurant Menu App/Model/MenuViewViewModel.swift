@@ -61,4 +61,16 @@ class MenuViewViewModel: ObservableObject {
             desserts.sort() { $0.title < $1.title }
         }
     }
+    
+    func foo(item: MenuItem) -> String {
+        var final: String = ""
+        for ingredient in item.ingredients {
+            final += ingredient.rawValue
+            if ingredient != item.ingredients.last {
+                final += ", "
+            }
+        }
+        
+        return final
+    }
 }

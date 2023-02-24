@@ -12,5 +12,5 @@ enum Ingredient: String, CaseIterable {
     case Broccoli = "Broccoli"
     case Carrot = "Carrot"
     case Pasta = "Pasta"
-    case TomatoSauce = "Tomato sauce"
+    case TomatoSauce = "Sauce"
 }
