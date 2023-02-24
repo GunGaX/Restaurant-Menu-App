@@ -94,13 +94,15 @@ struct MenuItemDetailsView: View {
                         .frame(maxWidth: .infinity)
                         
                         
-                        Link(destination: URL(string: "https://www.google.com")!) {
+                        Link(destination: URL(string: "https://github.com/GunGaX")!) {
                             HStack {
                                 Image(systemName: "link")
                                     .bold()
                                 
                                 Text("Read more")
                             }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 30)
                             .padding(.horizontal, -65)
                         }
                         .frame(maxWidth: .infinity)
