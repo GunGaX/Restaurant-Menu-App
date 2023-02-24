@@ -52,7 +52,7 @@ struct MenuItemsView: View {
             }
             
         }
-        .padding(.bottom)
+        .padding(.bottom, 1)
         .onAppear {
             viewModel.SortingCategory()
         }
