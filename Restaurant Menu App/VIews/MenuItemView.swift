@@ -33,7 +33,7 @@ struct MenuItemView: View {
                 ForEach(menuItems, id: \.self) { item in
                     NavigationLink(destination: MenuItemDetailsView(menuItem: item)) {
                         VStack {
-                            Image("PastaCarbonara")
+                            Image(item.imageName)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(height: 120)
@@ -42,6 +42,7 @@ struct MenuItemView: View {
                             HStack {
                                 Text(item.title)
                                     .foregroundColor(Color.primary)
+                                    .lineLimit(1)
                                     .padding(.leading)
                                 Spacer()
                             }

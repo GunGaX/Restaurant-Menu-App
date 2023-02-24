@@ -14,6 +14,8 @@ protocol MenuItemProtocol {
     var menuCategory: MenuCategory {get}
     var ordersCount: Int {get set}
     var ingredients: [Ingredient] {get set}
+    var description: String {get}
+    var imageName: String {get}
 }
 
 struct MenuItem: Identifiable, Hashable, MenuItemProtocol {
@@ -23,4 +25,6 @@ struct MenuItem: Identifiable, Hashable, MenuItemProtocol {
     let menuCategory: MenuCategory
     var ordersCount: Int
     var ingredients: [Ingredient]
+    let description: String
+    let imageName: String
 }

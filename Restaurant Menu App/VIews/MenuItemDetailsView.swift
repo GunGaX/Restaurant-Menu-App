@@ -17,9 +17,9 @@ struct MenuItemDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    Image("PastaCarbonara")
+                    Image(menuItem.imageName)
                         .resizable()
-                        .frame(height:300)
+                        .frame(height:250)
                         .cornerRadius(30)
                     
                     
@@ -58,31 +58,43 @@ struct MenuItemDetailsView: View {
                                 .frame(height: 0.3)
                                 .overlay(.secondary)
                             
+                            Image(systemName: "menucard.fill")
+                                .font(.title3)
+                                .foregroundColor(Color.gray)
+                            
                             Text("We use only high quality products and products of our own production.")
                                 .multilineTextAlignment(.center)
                             
                             if menuItem.ingredients != [] {
                                 HStack {
-                                    Image(systemName: "menucard.fill")
-                                        .font(.title3)
-                                        .foregroundColor(Color.gray)
-                                                                        
                                     Text("Dish components")
-                                        .padding(.horizontal, 60)
+                                        .frame(maxWidth: .infinity, alignment: .center)
                                 }
                                 
                                 Text(viewModel.foo(item: menuItem))
                                     .bold()
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .multilineTextAlignment(.center)
+                                    .padding(.top, -10)
                             }
+                            
+                            Divider()
+                                .frame(height: 0.3)
+                                .overlay(.secondary)
+                            
+                            Image(systemName: "info.circle.fill")
+                                .font(.title3)
+                                .foregroundColor(Color.gray)
+                            
+                            Text(menuItem.description)
+                                .multilineTextAlignment(.center)
                             
                         }
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity)
                         
                         
-                        Link(destination: URL(string: "https://github.com/GunGaX")!) {
+                        Link(destination: URL(string: "https://www.google.com")!) {
                             HStack {
                                 Image(systemName: "link")
                                     .bold()
@@ -117,6 +129,6 @@ struct MenuItemDetailsView: View {
 struct MenuItemDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = MenuViewViewModel().foods
-        MenuItemDetailsView(menuItem: viewModel[4])
+        MenuItemDetailsView(menuItem: viewModel[1])
     }
 }
