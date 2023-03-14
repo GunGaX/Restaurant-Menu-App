@@ -13,17 +13,20 @@ struct MenuItemsView: View {
     
     @AppStorage("colorScheme") var colorScheme: Bool = true
     
+    @State var searchText = ""
+    
+    
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 if viewModel.isFoodCategorySelected {
-                    MenuItemView(menuItems: viewModel.foods, menuCategory: .Food).environmentObject(viewModel)
+                    MenuItemView(menuItems: viewModel.foods, menuCategory: .Food, searchText: searchText).environmentObject(viewModel)
                 }
                 if viewModel.isDrinkCategorySelected {
-                    MenuItemView(menuItems: viewModel.drinks, menuCategory: .Drink).environmentObject(viewModel)
+                    MenuItemView(menuItems: viewModel.drinks, menuCategory: .Drink, searchText: searchText).environmentObject(viewModel)
                 }
                 if viewModel.isDessertCategorySelected {
-                    MenuItemView(menuItems: viewModel.desserts, menuCategory: .Dessert).environmentObject(viewModel)
+                    MenuItemView(menuItems: viewModel.desserts, menuCategory: .Dessert, searchText: searchText).environmentObject(viewModel)
                 }
             }
             VStack {
@@ -52,6 +55,7 @@ struct MenuItemsView: View {
             }
             
         }
+        .searchable(text: $searchText, prompt: "Look for something")
         .padding(.bottom, 1)
         .onAppear {
             viewModel.SortingCategory()

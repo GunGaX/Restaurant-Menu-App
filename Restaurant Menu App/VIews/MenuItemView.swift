@@ -11,26 +11,33 @@ struct MenuItemView: View {
     
     @EnvironmentObject var viewModel: MenuViewViewModel
     
-    init(menuItems: [MenuItem], menuCategory: MenuCategory) {
+//    @Binding var searchText: String
+    
+    init(menuItems: [MenuItem], menuCategory: MenuCategory, searchText: String) {
         self.menuItems = menuItems
         self.menuCategory = menuCategory
+        self.searchText = searchText
+        
     }
     
     var menuItems: [MenuItem]
     var menuCategory: MenuCategory
+    var searchText: String
     
     private var ColumnsGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         VStack {
             HStack {
-                Text(menuCategory.rawValue)
-                    .font(.title)
-                    .fontWeight(.medium)
-                Spacer()
+                if !searchResults.isEmpty {
+                    Text(menuCategory.rawValue)
+                        .font(.title)
+                        .fontWeight(.medium)
+                    Spacer()
+                }
             }
             LazyVGrid(columns: ColumnsGrid) {
-                ForEach(menuItems, id: \.self) { item in
+                ForEach(searchResults, id: \.self) { item in
                     NavigationLink(destination: MenuItemDetailsView(menuItem: item)) {
                         VStack {
                             Image(item.imageName)
@@ -70,10 +77,29 @@ struct MenuItemView: View {
         }
         .padding()
     }
-}
-struct MenuItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = MenuViewViewModel()
-        MenuItemView(menuItems: viewModel.foods, menuCategory: .Food)
+    
+    var searchResults: [MenuItem] {
+        var finalArray: [MenuItem] = []
+        if searchText.isEmpty {
+            return menuItems
+        } else {
+            for item in menuItems {
+                if item.title.lowercased().contains(searchText) {
+                    finalArray.append(item)
+                }
+            }
+            return finalArray
+        }
+       
     }
 }
+
+//struct MenuItemView_Previews: PreviewProvider {
+//    @Binding var searchText: String
+//
+//    static var previews: some View {
+//        let viewModel = MenuViewViewModel()
+//        var searchText = searchText
+//        MenuItemView(menuItems: viewModel.foods, menuCategory: .Food, searchText: searchText)
+//    }
+//}

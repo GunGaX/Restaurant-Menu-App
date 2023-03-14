@@ -15,7 +15,7 @@ struct MenuItemDetailsView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 18) {
                     Image(menuItem.imageName)
                         .resizable()
